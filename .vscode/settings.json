@@ -3,11 +3,22 @@
     "inputs": [],
     "servers": {
       "awslabs.aws-documentation-mcp-server": {
-        "command": "${env:HOME}/.local/bin/uvx",
+        "command": "${userHome}/.local/bin/uvx",
         "args": ["awslabs.aws-documentation-mcp-server@latest"],
         "env": {
           "FASTMCP_LOG_LEVEL": "ERROR"
         }
+      },
+      "sqlite": {
+        "command": "${userHome}/.local/bin/uv",
+        "args": [
+          "--directory",
+          "${workspaceFolder}/lib/modelcontextprotocol/servers/src/sqlite",
+          "run",
+          "mcp-server-sqlite",
+          "--db-path",
+          "${workspaceFolder}/mcp.sqlite3"
+        ]
       }
     }
   }
