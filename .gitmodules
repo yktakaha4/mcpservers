@@ -1,0 +1,3 @@
+[submodule "lib/awslabs/mcp"]
+	path = lib/awslabs/mcp
+	url = git@github.com:awslabs/mcp.git
