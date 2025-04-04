@@ -1,3 +1,6 @@
 [submodule "lib/awslabs/mcp"]
 	path = lib/awslabs/mcp
 	url = git@github.com:awslabs/mcp.git
+[submodule "lib/modelcontextprotocol/servers"]
+	path = lib/modelcontextprotocol/servers
+	url = git@github.com:modelcontextprotocol/servers.git
