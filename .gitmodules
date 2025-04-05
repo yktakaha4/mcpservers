@@ -4,3 +4,6 @@
 [submodule "lib/modelcontextprotocol/servers"]
 	path = lib/modelcontextprotocol/servers
 	url = git@github.com:modelcontextprotocol/servers.git
+[submodule "lib/modelcontextprotocol/specification"]
+	path = lib/modelcontextprotocol/specification
+	url = git@github.com:modelcontextprotocol/specification.git
