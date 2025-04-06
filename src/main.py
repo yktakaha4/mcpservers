@@ -45,4 +45,25 @@ def list_datasets() -> list[str]:
 def describe_dataset(dataset_name: str) -> dict:
     """describe a dataset"""
     dataset = load_dataset(dataset_name)
-    return dataset.describe().to_dict()
+    return {
+        "columns": dataset.columns.tolist(),
+        "dtypes": dataset.dtypes.astype(str).to_dict(),
+        "shape": dataset.shape,
+        "describe": json.loads(dataset.describe(include="all").to_json()),
+    }
+
+
+@mcp.tool()
+def query_dataset(
+    dataset_name: str,
+    query: str = None,
+    orderby: list[str] = None,
+) -> list[dict]:
+    """query a dataset"""
+    dataset = load_dataset(dataset_name)
+    if query:
+        dataset = dataset.query(query)
+    if orderby:
+        dataset = dataset.sort_values(orderby)
+
+    return dataset.to_dict(orient="records")

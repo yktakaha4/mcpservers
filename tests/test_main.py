@@ -31,5 +31,19 @@ class TestMain(unittest.TestCase):
 
     def test_describe_dataset_tsv(self, _):
         actual = src.main.describe_dataset("titanic.tsv")
+        print(actual)
         self.assertIsInstance(actual, dict)
-        self.assertEqual(actual["PassengerId"]["count"], 891.0)
+        self.assertIn("PassengerId", actual["columns"])
+        self.assertEqual(actual["describe"]["PassengerId"]["count"], 891.0)
+
+    def test_query_dataset(self, _):
+        actual = src.main.query_dataset("titanic.tsv", "PassengerId == 1")
+        self.assertEqual(len(actual), 1)
+        self.assertEqual(actual[0]["PassengerId"], 1)
+
+    def test_query_dataset_with_orderby(self, _):
+        actual = src.main.query_dataset(
+            "titanic.tsv", query="Age > '30'", orderby=["Age", "PassengerId"]
+        )
+        self.assertEqual(len(actual), 514)
+        self.assertEqual(actual[0]["Age"], "30.5")
