@@ -10,10 +10,9 @@
         }
       },
       "mymcp": {
-        "command": "${userHome}/.local/bin/uv",
+        "command": "${userHome}/.local/bin/uvx",
         "args": [
-          "run",
-          "mcp",
+          "mcp[cli]",
           "run",
           "${workspaceFolder}/src/main.py"
         ]
