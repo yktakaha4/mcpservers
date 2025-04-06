@@ -14,7 +14,7 @@
         "args": [
           "run",
           "mcp",
-          "dev",
+          "run",
           "${workspaceFolder}/src/main.py"
         ]
       },
