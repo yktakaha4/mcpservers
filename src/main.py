@@ -1,4 +1,5 @@
 import glob
+import json
 import os
 
 import pandas as pd
@@ -43,7 +44,5 @@ def list_datasets() -> list[str]:
 @mcp.tool()
 def describe_dataset(dataset_name: str) -> dict:
     """describe a dataset"""
-    if dataset_name not in cached_datasets:
-        df = pd.read_csv(os.path.join(get_datasets_base_dir(), dataset_name), sep="\t")
-        cached_datasets[dataset_name] = df.describe(include="all").to_dict()
-    return cached_datasets[dataset_name]
+    dataset = load_dataset(dataset_name)
+    return dataset.describe().to_dict()

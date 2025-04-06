@@ -14,8 +14,8 @@ TEST_DATASETS_BASE_DIR = os.path.join(os.path.dirname(__file__), "datasets")
 )
 class TestMain(unittest.TestCase):
     def test_load_dataset(self, _):
-        dataset = src.main.load_dataset("titanic.tsv")
-        self.assertIsInstance(dataset, pd.DataFrame)
+        actual = src.main.load_dataset("titanic.tsv")
+        self.assertIsInstance(actual, pd.DataFrame)
 
     def test_load_dataset_not_found(self, _):
         with self.assertRaises(FileNotFoundError):
@@ -26,5 +26,10 @@ class TestMain(unittest.TestCase):
             src.main.load_dataset("data.unsupported")
 
     def test_list_datasets(self, _):
-        datasets = src.main.list_datasets()
-        self.assertIn("titanic.tsv", datasets)
+        actual = src.main.list_datasets()
+        self.assertIn("titanic.tsv", actual)
+
+    def test_describe_dataset_tsv(self, _):
+        actual = src.main.describe_dataset("titanic.tsv")
+        self.assertIsInstance(actual, dict)
+        self.assertEqual(actual["PassengerId"]["count"], 891.0)
