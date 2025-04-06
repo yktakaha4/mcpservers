@@ -17,7 +17,7 @@
           "run",
           "mcp",
           "run",
-          "src/pandas.py"
+          "src/server_pandas.py"
         ]
       },
       "sqlite": {
