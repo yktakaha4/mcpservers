@@ -1,11 +1,12 @@
-from mcp.server.fastmcp import FastMCP
-import pandas as pd
-import os
 import glob
+import os
 
+import pandas as pd
+from mcp.server.fastmcp import FastMCP
 
 mcp = FastMCP("pandas")
 cached_datasets = {}
+
 
 def get_datasets_base_dir() -> str:
     return os.path.join(os.path.dirname(__file__), "..", "datasets")
@@ -34,9 +35,10 @@ def load_dataset(dataset_name: str) -> pd.DataFrame:
 def list_datasets() -> list[str]:
     """list all dataset names"""
     return [
-            os.path.basename(f)
-            for f in glob.glob(os.path.join(get_datasets_base_dir(), "*.*"))
+        os.path.basename(f)
+        for f in glob.glob(os.path.join(get_datasets_base_dir(), "*.*"))
     ]
+
 
 @mcp.tool()
 def describe_dataset(dataset_name: str) -> dict:

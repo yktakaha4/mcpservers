@@ -1,13 +1,17 @@
+import os
 import unittest
 import unittest.mock
-import src.main
-import os
+
 import pandas as pd
+
+import src.main
 
 TEST_DATASETS_BASE_DIR = os.path.join(os.path.dirname(__file__), "datasets")
 
 
-@unittest.mock.patch("src.main.get_datasets_base_dir", return_value=TEST_DATASETS_BASE_DIR)
+@unittest.mock.patch(
+    "src.main.get_datasets_base_dir", return_value=TEST_DATASETS_BASE_DIR
+)
 class TestMain(unittest.TestCase):
     def test_load_dataset(self, _):
         dataset = src.main.load_dataset("titanic.tsv")
