@@ -31,7 +31,7 @@ class TestMain(unittest.TestCase):
 
     def test_describe_dataset_tsv(self, _):
         actual = src.main.describe_dataset("titanic.tsv")
-        print(actual)
+
         self.assertIsInstance(actual, dict)
         self.assertIn("PassengerId", actual["columns"])
         self.assertEqual(actual["describe"]["PassengerId"]["count"], 891.0)
