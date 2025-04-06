@@ -12,7 +12,7 @@ TEST_DATASETS_BASE_DIR = os.path.join(os.path.dirname(__file__), "datasets")
 @unittest.mock.patch(
     "src.main.get_datasets_base_dir", return_value=TEST_DATASETS_BASE_DIR
 )
-class TestMain(unittest.TestCase):
+class TestPandas(unittest.TestCase):
     def test_load_dataset(self, _):
         actual = src.main.load_dataset("titanic.tsv")
         self.assertIsInstance(actual, pd.DataFrame)

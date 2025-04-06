@@ -9,12 +9,15 @@
           "FASTMCP_LOG_LEVEL": "ERROR"
         }
       },
-      "mymcp": {
-        "command": "${userHome}/.local/bin/uvx",
+      "pandas": {
+        "command": "${userHome}/.local/bin/uv",
         "args": [
-          "mcp[cli]",
+          "--directory",
+          "${workspaceFolder}",
           "run",
-          "${workspaceFolder}/src/main.py"
+          "mcp",
+          "run",
+          "src/pandas.py"
         ]
       },
       "sqlite": {
