@@ -2,9 +2,8 @@ import glob
 import json
 import os
 
-from mcp.server.fastmcp import FastMCP
-
 import pandas as pd
+from mcp.server.fastmcp import FastMCP
 
 mcp = FastMCP("pandas")
 cached_datasets = {}
