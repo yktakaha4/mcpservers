@@ -9,6 +9,15 @@
           "FASTMCP_LOG_LEVEL": "ERROR"
         }
       },
+      "mymcp": {
+        "command": "${userHome}/.local/bin/uv",
+        "args": [
+          "run",
+          "mcp",
+          "dev",
+          "${workspaceFolder}/src/main.py"
+        ]
+      },
       "sqlite": {
         "command": "${userHome}/.local/bin/uv",
         "args": [
