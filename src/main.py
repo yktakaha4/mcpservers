@@ -1,20 +1,14 @@
-# server.py
 from mcp.server.fastmcp import FastMCP
+import pandas as pd
+import os
+import glob
 
-# Create an MCP server
-mcp = FastMCP("Demo")
+mcp = FastMCP("pandas")
 
 
-# Add an addition tool
 @mcp.tool()
-def add(a: int, b: int) -> int:
-    """Add two numbers"""
-    return a + b
-
-
-# Add a dynamic greeting resource
-@mcp.resource("greeting://{name}")
-def get_greeting(name: str) -> str:
-    """Get a personalized greeting"""
-    return f"Hello, {name}!"
-
+def list_datasets() -> list[str]:
+    """list all datasets"""
+    # list all datasets in the datasets directory
+    datasets_dir = os.path.join(os.path.dirname(__file__), "datasets")
+    return glob.glob(os.path.join(datasets_dir, "*.*"))
